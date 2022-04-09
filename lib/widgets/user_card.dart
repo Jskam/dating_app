@@ -10,86 +10,89 @@ class UserCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
-      child: SizedBox(
-        height: MediaQuery.of(context).size.height / 1.4,
-        width: MediaQuery.of(context).size.width,
-        child: Stack(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: NetworkImage(user.imageUrls[0]),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(.5),
-                    spreadRadius: 4,
-                    blurRadius: 4,
-                    offset: const Offset(3, 3),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                gradient: const LinearGradient(
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.topCenter,
-                  colors: [
-                    Color.fromARGB(200, 0, 0, 0),
-                    Color.fromARGB(0, 0, 0, 0),
+    return Hero(
+      tag: 'user_image',
+      child: Padding(
+        padding: const EdgeInsets.only(top: 10, left: 20, right: 20),
+        child: SizedBox(
+          height: MediaQuery.of(context).size.height / 1.4,
+          width: MediaQuery.of(context).size.width,
+          child: Stack(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(user.imageUrls[0]),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(.5),
+                      spreadRadius: 4,
+                      blurRadius: 4,
+                      offset: const Offset(3, 3),
+                    )
                   ],
                 ),
               ),
-            ),
-            Positioned(
-              bottom: 30,
-              left: 20,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  AppText(
-                    size: 26,
-                    text: '${user.name}, ${user.age}',
-                    color: Colors.white,
-                    isBold: FontWeight.bold,
-                  ),
-                  AppText(
-                    size: 22,
-                    text: user.jobTitle,
-                    color: Colors.white.withAlpha(180),
-                  ),
-                  Row(
-                    children: [
-                      UserImageSmall(imageUrl: user.imageUrls[0]),
-                      UserImageSmall(imageUrl: user.imageUrls[1]),
-                      UserImageSmall(imageUrl: user.imageUrls[2]),
-                      UserImageSmall(imageUrl: user.imageUrls[3]),
-                      const SizedBox(width: 10),
-                      Container(
-                        height: 35,
-                        width: 35,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.white,
-                        ),
-                        child: const Icon(
-                          Icons.info_outline,
-                          size: 25,
-                          color: primary,
-                        ),
-                      )
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  gradient: const LinearGradient(
+                    begin: Alignment.bottomCenter,
+                    end: Alignment.topCenter,
+                    colors: [
+                      Color.fromARGB(200, 0, 0, 0),
+                      Color.fromARGB(0, 0, 0, 0),
                     ],
-                  )
-                ],
+                  ),
+                ),
               ),
-            )
-          ],
+              Positioned(
+                bottom: 30,
+                left: 20,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AppText(
+                      size: 26,
+                      text: '${user.name}, ${user.age}',
+                      color: Colors.white,
+                      isBold: FontWeight.bold,
+                    ),
+                    AppText(
+                      size: 22,
+                      text: user.jobTitle,
+                      color: Colors.white.withAlpha(180),
+                    ),
+                    Row(
+                      children: [
+                        UserImageSmall(imageUrl: user.imageUrls[0]),
+                        UserImageSmall(imageUrl: user.imageUrls[1]),
+                        UserImageSmall(imageUrl: user.imageUrls[2]),
+                        UserImageSmall(imageUrl: user.imageUrls[3]),
+                        const SizedBox(width: 10),
+                        Container(
+                          height: 35,
+                          width: 35,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white,
+                          ),
+                          child: const Icon(
+                            Icons.info_outline,
+                            size: 25,
+                            color: black,
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );

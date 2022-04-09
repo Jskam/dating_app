@@ -35,6 +35,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   equatable: ^2.0.3
+  flutter_bloc: ^8.0.1
 
 dev_dependencies:
   flutter_test:
@@ -77,19 +78,21 @@ flutter:
   fonts:
     - family: Merriweather
       fonts:
-        - asset: assets/fonts/Merriweather-Black.ttf
-        - asset: assets/fonts/Merriweather-BlackItalic.ttf
-        - asset: assets/fonts/Merriweather-Bold.ttf
-        - asset: assets/fonts/Merriweather-BoldItalic.ttf
-        - asset: assets/fonts/Merriweather-Italic.ttf
-        - asset: assets/fonts/Merriweather-Light.ttf
-        - asset: assets/fonts/Merriweather-LightItalic.ttf
-        - asset: assets/fonts/Merriweather-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
+        - asset: assets/fonts/Merriweather/Merriweather-Black.ttf
+        - asset: assets/fonts/Merriweather/Merriweather-BlackItalic.ttf
+        - asset: assets/fonts/Merriweather/Merriweather-Bold.ttf
+        - asset: assets/fonts/Merriweather/Merriweather-BoldItalic.ttf
+        - asset: assets/fonts/Merriweather/Merriweather-Italic.ttf
+        - asset: assets/fonts/Merriweather/Merriweather-Light.ttf
+        - asset: assets/fonts/Merriweather/Merriweather-LightItalic.ttf
+        - asset: assets/fonts/Merriweather/Merriweather-Regular.ttf
+    - family: SignikaNegative
+      fonts:
+        - asset: assets/fonts/SignikaNegative/SignikaNegative-Bold.ttf
+        - asset: assets/fonts/SignikaNegative/SignikaNegative-Light.ttf
+        - asset: assets/fonts/SignikaNegative/SignikaNegative-Medium.ttf
+        - asset: assets/fonts/SignikaNegative/SignikaNegative-Regular.ttf
+        - asset: assets/fonts/SignikaNegative/SignikaNegative-SemiBold.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #

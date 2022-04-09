@@ -1,3 +1,8 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
-const primary = Colors.black;
+const black = Colors.black;
+const white = Colors.white;
+
+const pink = Colors.pinkAccent;
+const blue = Colors.blue;
+const gradientColors = [pink, blue];

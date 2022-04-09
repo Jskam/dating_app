@@ -18,7 +18,7 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
           Expanded(
               flex: 2,
               child: AppText(
-                size: 32,
+                size: 28,
                 text: 'DISCOVER',
                 isBold: FontWeight.bold,
               )),
@@ -27,11 +27,11 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
       actions: [
         IconButton(
           onPressed: () {},
-          icon: const Icon(Icons.message, color: primary, size: 28),
+          icon: const Icon(Icons.message, color: black, size: 28),
         ),
         IconButton(
           onPressed: () {},
-          icon: const Icon(Icons.person, color: primary, size: 28),
+          icon: const Icon(Icons.person, color: black, size: 28),
         ),
       ],
     );

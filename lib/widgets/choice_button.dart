@@ -1,3 +1,4 @@
+import 'package:dating_app/config/colors.dart';
 import 'package:flutter/material.dart';
 
 class ChoiceButton extends StatelessWidget {
@@ -11,10 +12,10 @@ class ChoiceButton extends StatelessWidget {
     Key? key,
     this.hasGradient = false,
     required this.color,
-    required this.height,
+    this.height = 60,
     required this.icon,
-    required this.size,
-    required this.width,
+    this.size = 25,
+    this.width = 60,
   }) : super(key: key);
 
   @override
@@ -27,7 +28,7 @@ class ChoiceButton extends StatelessWidget {
         color: Colors.white,
         gradient: hasGradient
             ? const LinearGradient(
-                colors: [Colors.pinkAccent, Colors.blue],
+                colors: gradientColors,
               )
             : null,
         boxShadow: [

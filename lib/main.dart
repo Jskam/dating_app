@@ -1,5 +1,9 @@
-import 'package:dating_app/screens/home/home_screen.dart';
+import 'package:dating_app/blocs/swipe/swipe_bloc.dart';
+import 'package:dating_app/navigation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'models/models.dart';
 
 void main() {
   runApp(const MyApp());
@@ -7,12 +11,22 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
+  static final mainNavigation = MainNavigation();
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomeScreen(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => SwipeBloc()..add(LoadUsers(users: User.users)),
+        ),
+      ],
+      child:  MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Dating App',
+        routes: mainNavigation.routes,
+        initialRoute: MainNavigationRouteNames.homeSreen,
+        onGenerateRoute: mainNavigation.onGenerateRoute,
+      ),
     );
   }
 }
