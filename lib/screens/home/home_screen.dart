@@ -16,6 +16,7 @@ class HomeScreen extends StatelessWidget {
       appBar: const CustomAppBar(),
       body: BlocBuilder<SwipeBloc, SwipeState>(
         builder: (context, state) {
+          final swipeBloc = context.read<SwipeBloc>();
           if (state is SwipeLoading) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is SwipeLoaded) {
@@ -31,13 +32,9 @@ class HomeScreen extends StatelessWidget {
                     childWhenDragging: UserCard(user: state.users[1]),
                     onDragEnd: (drag) {
                       if (drag.velocity.pixelsPerSecond.dx < 0) {
-                        context
-                            .read<SwipeBloc>()
-                            .add(SwipeLeft(user: state.users[0]));
+                        swipeBloc.add(SwipeLeft(user: state.users[0]));
                       } else {
-                        context
-                            .read<SwipeBloc>()
-                            .add(SwipeRight(user: state.users[0]));
+                        swipeBloc.add(SwipeRight(user: state.users[0]));
                       }
                     },
                   ),
@@ -47,22 +44,16 @@ class HomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     InkWell(
-                      onTap: () {
-                        context
-                            .read<SwipeBloc>()
-                            .add(SwipeLeft(user: state.users[0]));
-                      },
+                      onTap: () =>
+                          swipeBloc.add(SwipeLeft(user: state.users[0])),
                       child: const ChoiceButton(
                         color: pink,
                         icon: Icons.clear_rounded,
                       ),
                     ),
                     InkWell(
-                      onTap: () {
-                        context
-                            .read<SwipeBloc>()
-                            .add(SwipeRight(user: state.users[0]));
-                      },
+                      onTap: () =>
+                          swipeBloc.add(SwipeRight(user: state.users[0])),
                       child: const ChoiceButton(
                         color: white,
                         height: 80,

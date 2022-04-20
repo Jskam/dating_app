@@ -24,7 +24,7 @@ class UserCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(5),
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: NetworkImage(user.imageUrls[0]),
+                    image: NetworkImage(user.imageUrls![0]),
                   ),
                   boxShadow: [
                     BoxShadow(
@@ -59,19 +59,23 @@ class UserCard extends StatelessWidget {
                       size: 26,
                       text: '${user.name}, ${user.age}',
                       color: Colors.white,
-                      isBold: FontWeight.bold,
+                      weight: FontWeight.bold,
                     ),
                     AppText(
                       size: 22,
-                      text: user.jobTitle,
+                      text: user.jobTitle ?? '',
                       color: Colors.white.withAlpha(180),
                     ),
                     Row(
                       children: [
-                        UserImageSmall(imageUrl: user.imageUrls[0]),
-                        UserImageSmall(imageUrl: user.imageUrls[1]),
-                        UserImageSmall(imageUrl: user.imageUrls[2]),
-                        UserImageSmall(imageUrl: user.imageUrls[3]),
+                        user.imageUrls != null
+                            ? Row(
+                                children: user.imageUrls!
+                                    .map((image) =>
+                                        UserImageSmall(imageUrl: image))
+                                    .toList(),
+                              )
+                            : const Spacer(),
                         const SizedBox(width: 10),
                         Container(
                           height: 35,

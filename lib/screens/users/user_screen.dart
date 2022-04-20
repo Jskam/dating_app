@@ -35,7 +35,7 @@ class UserScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
                           image: DecorationImage(
-                            image: NetworkImage(user.imageUrls[0]),
+                            image: NetworkImage(user.imageUrls![0]),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -94,31 +94,31 @@ class UserScreen extends StatelessWidget {
                   AppText(
                     size: 32,
                     text: '${user.name}, ${user.age}',
-                    isBold: FontWeight.bold,
+                    weight: FontWeight.bold,
                   ),
                   AppText(
                       size: 22,
-                      text: user.jobTitle,
+                      text: user.jobTitle??'',
                       color: black.withAlpha(200)),
                   const SizedBox(height: 15),
                   AppText(
                     size: 24,
                     text: 'About',
-                    isBold: FontWeight.bold,
+                    weight: FontWeight.bold,
                   ),
                   AppText(
                     size: 20,
-                    isBold: FontWeight.w300,
-                    text: user.bio,
+                    weight: FontWeight.w300,
+                    text: user.bio!,
                   ),
                   const SizedBox(height: 15),
                   AppText(
                     size: 24,
                     text: 'Interests',
-                    isBold: FontWeight.bold,
+                    weight: FontWeight.bold,
                   ),
                   Row(
-                    children: user.interests
+                    children: user.interests!
                         .map(
                           (interest) => Container(
                             padding: const EdgeInsets.all(5),

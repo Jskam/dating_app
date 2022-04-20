@@ -1,10 +1,16 @@
 import 'package:dating_app/config/app_text.dart';
 import 'package:dating_app/config/colors.dart';
+import 'package:dating_app/navigation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
+  final String title;
+  final bool hasActions;
   const CustomAppBar({
     Key? key,
+    this.title = 'DISCOVER',
+    this.hasActions = true,
   }) : super(key: key);
 
   @override
@@ -12,28 +18,43 @@ class CustomAppBar extends StatelessWidget with PreferredSizeWidget {
     return AppBar(
       backgroundColor: Colors.transparent,
       elevation: 0,
+      iconTheme: const IconThemeData(color: black),
       title: Row(
         children: [
-          Expanded(child: Image.asset('assets/images/logo.png', height: 50)),
           Expanded(
-              flex: 2,
-              child: AppText(
-                size: 28,
-                text: 'DISCOVER',
-                isBold: FontWeight.bold,
-              )),
+            child: SvgPicture.asset(
+              'assets/svg/logo.svg',
+              height: 50,
+            ),
+          ),
+          Expanded(
+            flex: 2,
+            child: AppText(
+              text: title,
+              size: 26,
+              weight: FontWeight.bold,
+            ),
+          ),
         ],
       ),
-      actions: [
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.message, color: black, size: 28),
-        ),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.person, color: black, size: 28),
-        ),
-      ],
+      actions: hasActions
+          ? [
+              IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(
+                      context, MainNavigationRouteNames.matchesScreen);
+                },
+                icon: const Icon(Icons.message, color: black, size: 28),
+              ),
+              IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(
+                      context, MainNavigationRouteNames.profileScreen);
+                },
+                icon: const Icon(Icons.person, color: black, size: 28),
+              ),
+            ]
+          : null,
     );
   }
 

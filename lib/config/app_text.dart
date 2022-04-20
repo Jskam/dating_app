@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 // ignore: non_constant_identifier_names
 Widget AppText({
-  FontWeight isBold = FontWeight.normal,
+  FontWeight weight = FontWeight.normal,
   Color color = black,
   required double size,
   required String text,
@@ -11,6 +11,7 @@ Widget AppText({
   bool overflow = false,
   bool lineThrough = false,
   bool alignCenter = false,
+  double interline = 1.25,
 }) {
   return Text(
     text,
@@ -18,10 +19,12 @@ Widget AppText({
     maxLines: maxLines == 0 ? null : maxLines,
     overflow: overflow == true ? TextOverflow.ellipsis : null,
     style: TextStyle(
+        height:interline,
         fontFamily: 'Merriweather',
         color: color,
         fontSize: size,
-        fontWeight: isBold,
-        decoration: lineThrough ? TextDecoration.lineThrough : null),
+        fontWeight: weight,
+        decoration: lineThrough ? TextDecoration.lineThrough : null,
+        ),
   );
 }

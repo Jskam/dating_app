@@ -12,17 +12,11 @@ class SwipeBloc extends Bloc<SwipeEvent, SwipeState> {
     on<SwipeRight>(_onSwipeRight);
   }
 
-  void _onLoadUsers(
-    LoadUsers event,
-    Emitter<SwipeState> emit,
-  ) {
+  void _onLoadUsers(LoadUsers event, Emitter<SwipeState> emit) {
     emit(SwipeLoaded(users: event.users));
   }
 
-  void _onSwipeLeft(
-    SwipeLeft event,
-    Emitter<SwipeState> emit,
-  ) {
+  void _onSwipeLeft(SwipeLeft event, Emitter<SwipeState> emit) {
     if (state is SwipeLoaded) {
       final state = this.state as SwipeLoaded;
       try {
@@ -31,10 +25,7 @@ class SwipeBloc extends Bloc<SwipeEvent, SwipeState> {
     }
   }
 
-  void _onSwipeRight(
-    SwipeRight event,
-    Emitter<SwipeState> emit,
-  ) {
+  void _onSwipeRight(SwipeRight event, Emitter<SwipeState> emit) {
     if (state is SwipeLoaded) {
       final state = this.state as SwipeLoaded;
       try {
